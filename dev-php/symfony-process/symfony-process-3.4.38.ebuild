@@ -26,15 +26,18 @@ S="${WORKDIR}/process-${PV}"
 src_prepare() {
 	default
 	if use test; then
-		cp "${FILESDIR}"/autoload.php "${S}"/autoload-test.php || die
+		sed -e "s@/usr/share/php@${EPREFIX}&@g" "${FILESDIR}"/autoload.php > \
+			"${S}"/autoload-test.php || die
 	fi
 }
 
 src_install() {
+	sed -e "s@/usr/share/php@${EPREFIX}&@g" "${FILESDIR}"/autoload.php > \
+		"${T}"/autoload.php || die
 	insinto "/usr/share/php/Symfony/Component/Process"
 	doins -r Exception/ Pipes/ ExecutableFinder.php InputStream.php \
 	LICENSE PhpExecutableFinder.php PhpProcess.php ProcessBuilder.php \
-	Process.php ProcessUtils.php "${FILESDIR}"/autoload.php
+	Process.php ProcessUtils.php "${T}"/autoload.php
 	dodoc README.md
 }
 
