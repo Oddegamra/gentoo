@@ -46,20 +46,20 @@ src_prepare() {
 
 // Dependencies
 \Fedora\Autoloader\Dependencies::required([
-	'/usr/share/php/Composer/CaBundle/autoload.php',
-	'/usr/share/php/Composer/MetadataMinifier/autoload.php',
-	'/usr/share/php/Composer/Semver/autoload.php',
-	'/usr/share/php/Composer/Spdx/autoload.php',
-	'/usr/share/php/Composer/XdebugHandler/autoload.php',
-	'/usr/share/php/JsonSchema/autoload.php',
-	'/usr/share/php/Psr/Log/autoload.php',
-	'/usr/share/php/Seld/JsonLint/autoload.php',
-	'/usr/share/php/Seld/PharUtils/autoload.php',
-	'/usr/share/php/Symfony/Component/Console/autoload.php',
-	'/usr/share/php/Symfony/Component/Filesystem/autoload.php',
-	'/usr/share/php/Symfony/Component/Finder/autoload.php',
-	'/usr/share/php/Symfony/Component/Process/autoload.php',
-	'/usr/share/php/React/Promise/autoload.php'
+	'${EPREFIX}/usr/share/php/Composer/CaBundle/autoload.php',
+	'${EPREFIX}/usr/share/php/Composer/MetadataMinifier/autoload.php',
+	'${EPREFIX}/usr/share/php/Composer/Semver/autoload.php',
+	'${EPREFIX}/usr/share/php/Composer/Spdx/autoload.php',
+	'${EPREFIX}/usr/share/php/Composer/XdebugHandler/autoload.php',
+	'${EPREFIX}/usr/share/php/JsonSchema/autoload.php',
+	'${EPREFIX}/usr/share/php/Psr/Log/autoload.php',
+	'${EPREFIX}/usr/share/php/Seld/JsonLint/autoload.php',
+	'${EPREFIX}/usr/share/php/Seld/PharUtils/autoload.php',
+	'${EPREFIX}/usr/share/php/Symfony/Component/Console/autoload.php',
+	'${EPREFIX}/usr/share/php/Symfony/Component/Filesystem/autoload.php',
+	'${EPREFIX}/usr/share/php/Symfony/Component/Finder/autoload.php',
+	'${EPREFIX}/usr/share/php/Symfony/Component/Process/autoload.php',
+	'${EPREFIX}/usr/share/php/React/Promise/autoload.php'
 ]);
 EOF
 }
