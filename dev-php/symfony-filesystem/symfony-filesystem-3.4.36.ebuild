@@ -22,14 +22,17 @@ S="${WORKDIR}/filesystem-${PV}"
 src_prepare() {
 	default
 	if use test; then
-		cp "${FILESDIR}/autoload.php" "${S}/autoload-test.php" || die
+		sed -e "s@/usr/share/php@${EPREFIX}&@g" "${FILESDIR}"/autoload.php > \
+			"${S}"/autoload-test.php || die
 	fi
 }
 
 src_install() {
+	sed -e "s@/usr/share/php@${EPREFIX}&@g" "${FILESDIR}"/autoload.php > \
+		"${T}"/autoload.php || die
 	insinto "/usr/share/php/Symfony/Component/Filesystem"
 	doins -r Exception
-	doins *.php "${FILESDIR}/autoload.php"
+	doins *.php "${T}/autoload.php"
 	dodoc CHANGELOG.md README.md
 }
 
