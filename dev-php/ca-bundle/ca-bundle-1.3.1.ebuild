@@ -16,7 +16,9 @@ RDEPEND="
 	dev-php/fedora-autoloader"
 
 src_install() {
+	sed -e "s@/usr/share/php@${EPREFIX}&@g" "${FILESDIR}"/autoload.php > \
+		"${T}"/autoload.php || die
 	insinto /usr/share/php/Composer/CaBundle
-	doins src/CaBundle.php "${FILESDIR}/autoload.php"
+	doins src/CaBundle.php "${T}/autoload.php"
 	dodoc README.md
 }
