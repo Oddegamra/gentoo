@@ -25,13 +25,16 @@ S="${WORKDIR}/config-${PV}"
 src_prepare() {
 	default
 	if use test; then
-		cp "${FILESDIR}"/autoload.php "${S}"/autoload-test.php || die
+		sed -e "s@/usr/share/php@${EPREFIX}&@g" "${FILESDIR}"/autoload.php > \
+			"${S}"/autoload-test.php || die
 	fi
 }
 
 src_install() {
+	sed -e "s@/usr/share/php@${EPREFIX}&@g" "${FILESDIR}"/autoload.php > \
+		"${T}"/autoload.php || die
 	insinto "/usr/share/php/Symfony/Component/Config"
-	doins -r . "${FILESDIR}"/autoload.php
+	doins -r . "${T}"/autoload.php
 	dodoc README.md
 }
 
